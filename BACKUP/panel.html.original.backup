@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Panel | ONG Animales Ramallo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="panel.css">
+</head>
+
+<body>
+
+  <!-- OVERLAY MOBILE -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+
+      <div class="brand">
+        <div class="brand-mark">🐾</div>
+
+        <div class="brand-text">
+          <strong>ONG Animales</strong>
+          <span>Ramallo</span>
+        </div>
+      </div>
+
+      <button class="close-sidebar" id="closeSidebar" aria-label="Cerrar menú">
+        ×
+      </button>
+
+    </div>
+
+    <nav class="main-nav">
+
+      <button class="nav-item active" data-section="inicio">
+        <span class="nav-icon">⌂</span>
+        <span>Inicio</span>
+      </button>
+
+      <button class="nav-item" data-section="animales">
+        <span class="nav-icon">🐶</span>
+        <span>Animales</span>
+        <span class="nav-badge">12</span>
+      </button>
+
+      <button class="nav-item" data-section="solicitudes">
+        <span class="nav-icon">✉</span>
+        <span>Solicitudes</span>
+        <span class="nav-badge alert">4</span>
+      </button>
+
+      <button class="nav-item" data-section="donaciones">
+        <span class="nav-icon">♥</span>
+        <span>Donaciones</span>
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <p class="nav-label">GESTIÓN</p>
+
+      <button class="nav-item" data-section="contenido">
+        <span class="nav-icon">▤</span>
+        <span>Contenido</span>
+      </button>
+
+      <button class="nav-item" data-section="multimedia">
+        <span class="nav-icon">▧</span>
+        <span>Multimedia</span>
+      </button>
+
+      <button class="nav-item" data-section="configuracion">
+        <span class="nav-icon">⚙</span>
+        <span>Configuración</span>
+      </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="help-card">
+        <div class="help-icon">?</div>
+
+        <div>
+          <strong>¿Necesitás ayuda?</strong>
+          <span>Centro de ayuda</span>
+        </div>
+      </div>
+
+      <button class="profile-mini">
+        <div class="avatar">C</div>
+
+        <div class="profile-info">
+          <strong>Celina</strong>
+          <span>Administradora</span>
+        </div>
+
+        <span class="profile-arrow">⋮</span>
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+      <button class="menu-button" id="openSidebar" aria-label="Abrir menú">
+        ☰
+      </button>
+
+      <div class="breadcrumb">
+        <span>Panel</span>
+        <span class="breadcrumb-separator">/</span>
+        <strong id="breadcrumbCurrent">Inicio</strong>
+      </div>
+
+      <div class="topbar-actions">
+
+        <button class="icon-button notification-button" title="Notificaciones">
+          ♢
+          <span class="notification-dot"></span>
+        </button>
+
+        <div class="topbar-user">
+          <div class="avatar">C</div>
+
+          <div>
+            <strong>Celina</strong>
+            <span>Administradora</span>
+          </div>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ========================= -->
+    <!-- INICIO -->
+    <!-- ========================= -->
+
+    <section class="page-section active-section" id="section-inicio">
+
+      <div class="page-heading">
+
+        <div>
+          <p class="eyebrow">PANEL DE ADMINISTRACIÓN</p>
+
+          <h1>Hola, Celina <span>👋</span></h1>
+
+          <p class="page-description">
+            Acá tenés un resumen de lo que está pasando en la ONG.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- ESTADÍSTICAS -->
+
+      <div class="stats-grid">
+
+        <article class="stat-card">
+
+          <div class="stat-icon brown">
+            🐶
+          </div>
+
+          <div class="stat-content">
+            <span>Animales activos</span>
+            <strong>12</strong>
+            <small>En la página</small>
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon orange">
+            ✉
+          </div>
+
+          <div class="stat-content">
+            <span>Solicitudes nuevas</span>
+            <strong>4</strong>
+            <small class="positive">Requieren atención</small>
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon terracotta">
+            ♥
+          </div>
+
+          <div class="stat-content">
+            <span>Adopciones</span>
+            <strong>8</strong>
+            <small>Este año</small>
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon soft">
+            $
+          </div>
+
+          <div class="stat-content">
+            <span>Donaciones</span>
+            <strong>$125K</strong>
+            <small>Este mes</small>
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <!-- ACCIONES + ACTIVIDAD -->
+
+      <div class="dashboard-grid">
+
+        <section class="dashboard-card quick-actions">
+
+          <div class="card-heading">
+            <div>
+              <h2>Acciones rápidas</h2>
+              <p>Las tareas que más vas a utilizar.</p>
+            </div>
+          </div>
+
+
+          <div class="quick-grid">
+
+            <button class="quick-action" data-section="animales">
+
+              <div class="quick-icon brown-bg">
+                +
+              </div>
+
+              <div>
+                <strong>Agregar animal</strong>
+                <span>Publicar un nuevo animal</span>
+              </div>
+
+              <span class="quick-arrow">→</span>
+
+            </button>
+
+
+            <button class="quick-action" data-section="solicitudes">
+
+              <div class="quick-icon orange-bg">
+                ✉
+              </div>
+
+              <div>
+                <strong>Ver solicitudes</strong>
+                <span>Hay 4 pendientes</span>
+              </div>
+
+              <span class="quick-arrow">→</span>
+
+            </button>
+
+
+            <button class="quick-action" data-section="multimedia">
+
+              <div class="quick-icon terracotta-bg">
+                ▧
+              </div>
+
+              <div>
+                <strong>Administrar imágenes</strong>
+                <span>Fotos de la página</span>
+              </div>
+
+              <span class="quick-arrow">→</span>
+
+            </button>
+
+
+            <button class="quick-action" data-section="contenido">
+
+              <div class="quick-icon brown-bg">
+                ▤
+              </div>
+
+              <div>
+                <strong>Editar contenido</strong>
+                <span>Textos y secciones</span>
+              </div>
+
+              <span class="quick-arrow">→</span>
+
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- ACTIVIDAD -->
+
+        <section class="dashboard-card activity-card">
+
+          <div class="card-heading">
+
+            <div>
+              <h2>Actividad reciente</h2>
+              <p>Últimos movimientos.</p>
+            </div>
+
+            <button class="text-button">
+              Ver todo
+            </button>
+
+          </div>
+
+
+          <div class="activity-list">
+
+            <div class="activity-item">
+
+              <div class="activity-icon animal">
+                🐶
+              </div>
+
+              <div class="activity-info">
+                <strong>Aaron fue actualizado</strong>
+                <span>Hace 12 minutos</span>
+              </div>
+
+            </div>
+
+
+            <div class="activity-item">
+
+              <div class="activity-icon request">
+                ✉
+              </div>
+
+              <div class="activity-info">
+                <strong>Nueva solicitud de adopción</strong>
+                <span>Hace 35 minutos</span>
+              </div>
+
+            </div>
+
+
+            <div class="activity-item">
+
+              <div class="activity-icon donation">
+                ♥
+              </div>
+
+              <div class="activity-info">
+                <strong>Nueva donación recibida</strong>
+                <span>Hace 1 hora</span>
+              </div>
+
+            </div>
+
+
+            <div class="activity-item">
+
+              <div class="activity-icon content">
+                ▤
+              </div>
+
+              <div class="activity-info">
+                <strong>Se modificó la página de inicio</strong>
+                <span>Ayer</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ANIMALES DESTACADOS -->
+
+      <section class="dashboard-card featured-section">
+
+        <div class="card-heading">
+
+          <div>
+            <h2>Animales publicados</h2>
+            <p>Los últimos animales agregados a la página.</p>
+          </div>
+
+          <button class="outline-button" data-section="animales">
+            Ver animales
+          </button>
+
+        </div>
+
+
+        <div class="animal-preview-grid">
+
+          <article class="animal-preview">
+
+            <div class="animal-image placeholder-image">
+              🐶
+            </div>
+
+            <div class="animal-details">
+              <strong>Aaron</strong>
+              <span>Macho · Adulto</span>
+
+              <div class="animal-status">
+                <i></i>
+                En adopción
+              </div>
+            </div>
+
+          </article>
+
+
+          <article class="animal-preview">
+
+            <div class="animal-image placeholder-image">
+              🐕
+            </div>
+
+            <div class="animal-details">
+              <strong>Luna</strong>
+              <span>Hembra · Joven</span>
+
+              <div class="animal-status">
+                <i></i>
+                En adopción
+              </div>
+            </div>
+
+          </article>
+
+
+          <article class="animal-preview">
+
+            <div class="animal-image placeholder-image">
+              🐕‍🦺
+            </div>
+
+            <div class="animal-details">
+              <strong>Toby</strong>
+              <span>Macho · Adulto</span>
+
+              <div class="animal-status treatment">
+                <i></i>
+                En tratamiento
+              </div>
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- OTRAS SECCIONES -->
+    <!-- ========================= -->
+
+ <section class="page-section" id="section-animales">
+
+  <div class="animals-header">
+
+    <div>
+      <p class="eyebrow">GESTIÓN DE ANIMALES</p>
+
+      <h1>Animales 🐾</h1>
+
+      <p class="page-description">
+        Administrá los animales que aparecen en la página.
+      </p>
+    </div>
+
+    <button class="primary-button open-animal-modal">
+      + Agregar animal
+    </button>
+
+  </div>
+
+
+  <!-- HERRAMIENTAS -->
+
+  <div class="animals-toolbar">
+
+    <div class="animal-search">
+
+      <span>⌕</span>
+
+      <input
+        type="search"
+        id="animalSearch"
+        placeholder="Buscar por nombre..."
+      >
+
+    </div>
+
+
+    <div class="animal-filters">
+
+      <button class="filter-button active" data-filter="todos">
+        Todos
+      </button>
+
+      <button class="filter-button" data-filter="adopcion">
+        En adopción
+      </button>
+
+      <button class="filter-button" data-filter="tratamiento">
+        Tratamiento
+      </button>
+
+      <button class="filter-button" data-filter="transito">
+        Tránsito
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- RESUMEN -->
+
+  <div class="animals-summary">
+
+    <div>
+      <strong id="animalsCount">12</strong>
+      <span>animales publicados</span>
+    </div>
+
+    <button class="sort-button" id="animalSort">
+      Ordenar ▾
+    </button>
+
+  </div>
+
+
+  <!-- LISTADO -->
+
+  <div class="animals-grid" id="animalsGrid">
+
+
+    <article class="animal-card" data-status="adopcion" data-name="aaron">
+
+      <div class="animal-card-image">
+
+        <div class="animal-photo-placeholder">
+          🐶
+        </div>
+
+        <span class="animal-featured">
+          ⭐ Destacado
+        </span>
+
+        <button class="animal-menu">
+          ⋮
+        </button>
+
+      </div>
+
+
+      <div class="animal-card-content">
+
+        <div class="animal-card-title">
+
+          <div>
+            <h3>Aaron</h3>
+
+            <p>Macho · Adulto · Mediano</p>
+          </div>
+
+          <span class="animal-status-pill adoption">
+            En adopción
+          </span>
+
+        </div>
+
+
+        <p class="animal-description">
+          Aaron es un perro cariñoso y juguetón que busca una familia
+          responsable que pueda darle mucho amor.
+        </p>
+
+
+        <div class="animal-card-actions">
+
+          <button class="secondary-action">
+            Ver
+          </button>
+
+          <button class="edit-action">
+            Editar
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <article class="animal-card" data-status="adopcion" data-name="luna">
+
+      <div class="animal-card-image">
+
+        <div class="animal-photo-placeholder female">
+          🐶
+        </div>
+
+        <button class="animal-menu">
+          ⋮
+        </button>
+
+      </div>
+
+
+      <div class="animal-card-content">
+
+        <div class="animal-card-title">
+
+          <div>
+            <h3>Luna</h3>
+
+            <p>Hembra · Joven · Pequeña</p>
+          </div>
+
+          <span class="animal-status-pill adoption">
+            En adopción
+          </span>
+
+        </div>
+
+
+        <p class="animal-description">
+          Luna es dulce, activa y muy compañera.
+        </p>
+
+
+        <div class="animal-card-actions">
+
+          <button class="secondary-action">
+            Ver
+          </button>
+
+          <button class="edit-action">
+            Editar
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <article class="animal-card" data-status="tratamiento" data-name="toby">
+
+      <div class="animal-card-image">
+
+        <div class="animal-photo-placeholder treatment-photo">
+          🐕
+        </div>
+
+        <button class="animal-menu">
+          ⋮
+        </button>
+
+      </div>
+
+
+      <div class="animal-card-content">
+
+        <div class="animal-card-title">
+
+          <div>
+            <h3>Toby</h3>
+
+            <p>Macho · Adulto · Grande</p>
+          </div>
+
+          <span class="animal-status-pill treatment">
+            Tratamiento
+          </span>
+
+        </div>
+
+
+        <p class="animal-description">
+          Toby se encuentra recuperándose y todavía no está disponible
+          para adopción.
+        </p>
+
+
+        <div class="animal-card-actions">
+
+          <button class="secondary-action">
+            Ver
+          </button>
+
+          <button class="edit-action">
+            Editar
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+    <section class="page-section" id="section-solicitudes">
+
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">GESTIÓN</p>
+          <h1>Solicitudes</h1>
+          <p class="page-description">
+            Revisá y gestioná las solicitudes recibidas.
+          </p>
+        </div>
+      </div>
+
+      <div class="empty-development-card">
+        <div class="development-icon">✉</div>
+        <h2>Solicitudes de adopción</h2>
+        <p>
+          Acá vamos a crear el sistema para revisar, gestionar y responder
+          las solicitudes.
+        </p>
+      </div>
+
+    </section>
+
+
+    <section class="page-section" id="section-donaciones">
+
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">GESTIÓN</p>
+          <h1>Donaciones</h1>
+          <p class="page-description">
+            Consultá las donaciones realizadas a la ONG.
+          </p>
+        </div>
+      </div>
+
+      <div class="empty-development-card">
+        <div class="development-icon">♥</div>
+        <h2>Donaciones</h2>
+        <p>
+          Acá vamos a construir el sistema de donaciones y sus registros.
+        </p>
+      </div>
+
+    </section>
+
+
+    <section class="page-section" id="section-contenido">
+
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">GESTIÓN</p>
+          <h1>Contenido</h1>
+          <p class="page-description">
+            Modificá los textos y secciones de la página.
+          </p>
+        </div>
+      </div>
+
+      <div class="empty-development-card">
+        <div class="development-icon">▤</div>
+        <h2>Contenido de la página</h2>
+        <p>
+          Acá podremos editar textos, banners, secciones y otros elementos
+          sin tocar código.
+        </p>
+      </div>
+
+    </section>
+
+
+    <section class="page-section" id="section-multimedia">
+
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">GESTIÓN</p>
+          <h1>Multimedia</h1>
+          <p class="page-description">
+            Administrá las imágenes utilizadas por la página.
+          </p>
+        </div>
+      </div>
+
+      <div class="empty-development-card">
+        <div class="development-icon">▧</div>
+        <h2>Biblioteca multimedia</h2>
+        <p>
+          Vamos a poder subir, reemplazar, eliminar y ordenar imágenes.
+        </p>
+      </div>
+
+    </section>
+
+
+    <section class="page-section" id="section-configuracion">
+
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">SISTEMA</p>
+          <h1>Configuración</h1>
+          <p class="page-description">
+            Configuraciones generales del panel.
+          </p>
+        </div>
+      </div>
+
+      <div class="empty-development-card">
+        <div class="development-icon">⚙</div>
+        <h2>Configuración</h2>
+        <p>
+          Acá estarán los administradores, datos de la ONG, seguridad
+          y configuraciones generales.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- NAVEGACIÓN MOBILE -->
+<nav class="mobile-bottom-nav">
+
+  <button class="mobile-nav-item active" data-section="inicio">
+    <span class="mobile-nav-icon">⌂</span>
+    <span>Inicio</span>
+  </button>
+
+  <button class="mobile-nav-item" data-section="animales">
+    <span class="mobile-nav-icon">🐶</span>
+    <span>Animales</span>
+  </button>
+
+  <button class="mobile-nav-item" data-section="solicitudes">
+    <span class="mobile-nav-icon">✉</span>
+    <span>Solicitudes</span>
+  </button>
+
+  <button class="mobile-nav-item" id="mobileMoreButton">
+    <span class="mobile-nav-icon">☰</span>
+    <span>Más</span>
+  </button>
+
+</nav>
+
+<!-- =========================================
+     MODAL AGREGAR ANIMAL
+========================================= -->
+
+<div class="modal-backdrop" id="animalModal">
+
+  <div class="animal-modal">
+
+    <div class="modal-header">
+
+      <div>
+        <p class="eyebrow">NUEVO ANIMAL</p>
+        <h2>Agregar animal 🐶</h2>
+      </div>
+
+      <button class="modal-close" id="closeAnimalModal">
+        ×
+      </button>
+
+    </div>
+
+
+    <form id="animalForm">
+
+
+      <!-- FOTOS -->
+
+      <div class="form-section">
+
+        <div class="form-section-title">
+
+          <div>
+            <h3>Fotos</h3>
+            <p>Agregá las fotos del animal.</p>
+          </div>
+
+        </div>
+
+
+        <div class="photo-upload-area" id="photoUploadArea">
+
+          <div class="upload-icon">
+            ↑
+          </div>
+
+          <strong>Subir fotos</strong>
+
+          <span>
+            Tocá acá para seleccionar imágenes
+          </span>
+
+          <input
+            type="file"
+            id="animalPhotos"
+            accept="image/*"
+            multiple
+            hidden
+          >
+
+        </div>
+
+
+        <div
+          class="photo-preview-list"
+          id="photoPreviewList">
+        </div>
+
+      </div>
+
+
+      <!-- INFORMACIÓN -->
+
+      <div class="form-section">
+
+        <div class="form-section-title">
+
+          <div>
+            <h3>Información del animal</h3>
+            <p>Datos que aparecerán en su ficha.</p>
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <label class="form-field full">
+
+            <span>Nombre</span>
+
+            <input
+              type="text"
+              id="animalName"
+              placeholder="Ej. Aaron"
+              required
+            >
+
+          </label>
+
+
+          <label class="form-field">
+
+            <span>Sexo</span>
+
+            <select id="animalSex">
+
+              <option value="">Seleccionar</option>
+              <option value="Macho">Macho</option>
+              <option value="Hembra">Hembra</option>
+
+            </select>
+
+          </label>
+
+
+          <label class="form-field">
+
+            <span>Edad</span>
+
+            <input
+              type="text"
+              id="animalAge"
+              placeholder="Ej. 2 años"
+            >
+
+          </label>
+
+
+          <label class="form-field">
+
+            <span>Tamaño</span>
+
+            <select id="animalSize">
+
+              <option value="">Seleccionar</option>
+              <option>Pequeño</option>
+              <option>Mediano</option>
+              <option>Grande</option>
+
+            </select>
+
+          </label>
+
+
+          <label class="form-field">
+
+            <span>Estado</span>
+
+            <select id="animalStatus">
+
+              <option value="adopcion">
+                En adopción
+              </option>
+
+              <option value="tratamiento">
+                En tratamiento
+              </option>
+
+              <option value="transito">
+                En tránsito
+              </option>
+
+              <option value="adoptado">
+                Adoptado
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label class="form-field full">
+
+            <span>Historia</span>
+
+            <textarea
+              id="animalStory"
+              rows="5"
+              placeholder="Contá la historia del animal..."
+            ></textarea>
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <!-- OPCIONES -->
+
+      <div class="form-section">
+
+        <div class="form-section-title">
+
+          <div>
+            <h3>Publicación</h3>
+            <p>Elegí cómo querés mostrarlo en la página.</p>
+          </div>
+
+        </div>
+
+
+        <label class="switch-row">
+
+          <div>
+
+            <strong>Mostrar en la página</strong>
+
+            <span>
+              El animal estará visible públicamente.
+            </span>
+
+          </div>
+
+          <input
+            type="checkbox"
+            id="animalPublished"
+            checked
+          >
+
+          <span class="switch"></span>
+
+        </label>
+
+
+        <label class="switch-row">
+
+          <div>
+
+            <strong>Destacar animal</strong>
+
+            <span>
+              Puede aparecer en lugares destacados.
+            </span>
+
+          </div>
+
+          <input
+            type="checkbox"
+            id="animalFeatured"
+          >
+
+          <span class="switch"></span>
+
+        </label>
+
+      </div>
+
+
+      <!-- ACCIONES -->
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="cancel-button"
+          id="cancelAnimalModal">
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="primary-button">
+          Guardar animal
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✓</span>
+    <span id="toastMessage">Acción realizada</span>
+  </div>
+
+
+  <script src="panel.js"></script>
+
+</body>
+</html>

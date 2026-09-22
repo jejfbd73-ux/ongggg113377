@@ -1,0 +1,639 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+  const navItems = document.querySelectorAll(".nav-item");
+  const quickActions = document.querySelectorAll("[data-section]");
+  const sections = document.querySelectorAll(".page-section");
+
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("mobileOverlay");
+
+  const openSidebarButton = document.getElementById("openSidebar");
+  const closeSidebarButton = document.getElementById("closeSidebar");
+
+  const breadcrumbCurrent = document.getElementById("breadcrumbCurrent");
+
+  const toast = document.getElementById("toast");
+  const toastMessage = document.getElementById("toastMessage");
+
+
+  /*
+  ==========================================
+  NAVEGACIÓN
+  ==========================================
+  */
+
+  const sectionNames = {
+    inicio: "Inicio",
+    animales: "Animales",
+    solicitudes: "Solicitudes",
+    donaciones: "Donaciones",
+    contenido: "Contenido",
+    multimedia: "Multimedia",
+    configuracion: "Configuración"
+  };
+
+
+  function showSection(sectionName) {
+
+    sections.forEach(section => {
+      section.classList.remove("active-section");
+    });
+
+    const target = document.getElementById(`section-${sectionName}`);
+
+    if (target) {
+      target.classList.add("active-section");
+    }
+
+
+    navItems.forEach(item => {
+
+      if (item.dataset.section === sectionName) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+
+    });
+
+
+    breadcrumbCurrent.textContent =
+      sectionNames[sectionName] || "Inicio";
+
+
+    closeMobileMenu();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /*
+  ==========================================
+  BOTONES DE NAVEGACIÓN
+  ==========================================
+  */
+
+  navItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+      const sectionName = item.dataset.section;
+
+      showSection(sectionName);
+
+    });
+
+  });
+
+
+  quickActions.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+      const sectionName = item.dataset.section;
+
+      if (sectionName) {
+        showSection(sectionName);
+      }
+
+    });
+
+  });
+
+
+  /*
+  ==========================================
+  MENÚ MOBILE
+  ==========================================
+  */
+
+  function openMobileMenu() {
+
+    sidebar.classList.add("open");
+    overlay.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+
+  }
+
+
+  function closeMobileMenu() {
+
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+  }
+
+
+  openSidebarButton.addEventListener("click", openMobileMenu);
+
+  closeSidebarButton.addEventListener("click", closeMobileMenu);
+
+  overlay.addEventListener("click", closeMobileMenu);
+
+
+  /*
+  ==========================================
+  ESC PARA CERRAR
+  ==========================================
+  */
+
+  document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+      closeMobileMenu();
+    }
+
+  });
+
+
+  /*
+  ==========================================
+  TOAST
+  ==========================================
+  */
+
+  let toastTimer;
+
+
+  function showToast(message) {
+
+    toastMessage.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+
+      toast.classList.remove("show");
+
+    }, 2800);
+
+  }
+
+
+  /*
+  ==========================================
+  NOTIFICACIONES
+  ==========================================
+  */
+
+  const notificationButton =
+    document.querySelector(".notification-button");
+
+
+  if (notificationButton) {
+
+    notificationButton.addEventListener("click", () => {
+
+      showToast("Tenés 4 solicitudes nuevas");
+
+    });
+
+  }
+
+
+  /*
+  ==========================================
+  VER TODO
+  ==========================================
+  */
+
+  const textButton =
+    document.querySelector(".text-button");
+
+
+  if (textButton) {
+
+    textButton.addEventListener("click", () => {
+
+      showToast("El historial completo estará disponible próximamente");
+
+    });
+
+  }
+
+
+  /*
+  ==========================================
+  BOTONES DE DESARROLLO
+  ==========================================
+  */
+
+  const primaryButton =
+    document.querySelector(".primary-button");
+
+
+  if (primaryButton) {
+
+    primaryButton.addEventListener("click", () => {
+
+      showToast("Acá construiremos el formulario para agregar animales");
+
+    });
+
+  }
+
+
+  /*
+  ==========================================
+  DETECTAR CAMBIO DE TAMAÑO
+  ==========================================
+  */
+
+  window.addEventListener("resize", () => {
+
+    if (window.innerWidth > 800) {
+      closeMobileMenu();
+    }
+
+  });
+
+
+  /*
+  ==========================================
+  INICIO
+  ==========================================
+  */
+const mobileNavItems =
+  document.querySelectorAll(".mobile-nav-item[data-section]");
+
+mobileNavItems.forEach(item => {
+
+  item.addEventListener("click", () => {
+
+    const sectionName = item.dataset.section;
+
+    mobileNavItems.forEach(nav => {
+      nav.classList.remove("active");
+    });
+
+    item.classList.add("active");
+
+    showSection(sectionName);
+
+  });
+
+});
+
+
+const mobileMoreButton =
+  document.getElementById("mobileMoreButton");
+
+if (mobileMoreButton) {
+
+  mobileMoreButton.addEventListener("click", () => {
+    openMobileMenu();
+  });
+
+}
+
+/*
+==========================================
+ANIMALES - FILTROS Y BÚSQUEDA
+==========================================
+*/
+
+const animalCards = document.querySelectorAll(".animal-card");
+const filterButtons = document.querySelectorAll(".filter-button");
+const animalSearch = document.getElementById("animalSearch");
+const animalsCount = document.getElementById("animalsCount");
+
+
+function updateAnimalList() {
+
+  const search =
+    animalSearch?.value.toLowerCase().trim() || "";
+
+  const activeFilter =
+    document.querySelector(".filter-button.active")?.dataset.filter ||
+    "todos";
+
+  let visible = 0;
+
+  animalCards.forEach(card => {
+
+    const name =
+      card.dataset.name.toLowerCase();
+
+    const status =
+      card.dataset.status;
+
+    const matchesSearch =
+      name.includes(search);
+
+    const matchesFilter =
+      activeFilter === "todos" ||
+      status === activeFilter;
+
+    const shouldShow =
+      matchesSearch && matchesFilter;
+
+    card.style.display =
+      shouldShow ? "" : "none";
+
+    if (shouldShow) {
+      visible++;
+    }
+
+  });
+
+  if (animalsCount) {
+    animalsCount.textContent = visible;
+  }
+
+}
+
+
+filterButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    filterButtons.forEach(item => {
+      item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    updateAnimalList();
+
+  });
+
+});
+
+
+if (animalSearch) {
+
+  animalSearch.addEventListener(
+    "input",
+    updateAnimalList
+  );
+
+}
+
+
+/*
+==========================================
+MODAL AGREGAR ANIMAL
+==========================================
+*/
+
+const animalModal =
+  document.getElementById("animalModal");
+
+const openAnimalButtons =
+  document.querySelectorAll(".open-animal-modal");
+
+const closeAnimalModalButton =
+  document.getElementById("closeAnimalModal");
+
+const cancelAnimalModalButton =
+  document.getElementById("cancelAnimalModal");
+
+
+function openAnimalModal() {
+
+  animalModal.classList.add("open");
+
+  document.body.style.overflow = "hidden";
+
+}
+
+
+function closeAnimalModal() {
+
+  animalModal.classList.remove("open");
+
+  document.body.style.overflow = "";
+
+}
+
+
+openAnimalButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    openAnimalModal
+  );
+
+});
+
+
+if (closeAnimalModalButton) {
+
+  closeAnimalModalButton.addEventListener(
+    "click",
+    closeAnimalModal
+  );
+
+}
+
+
+if (cancelAnimalModalButton) {
+
+  cancelAnimalModalButton.addEventListener(
+    "click",
+    closeAnimalModal
+  );
+
+}
+
+
+animalModal?.addEventListener("click", event => {
+
+  if (event.target === animalModal) {
+    closeAnimalModal();
+  }
+
+});
+
+
+/*
+==========================================
+SUBIR Y PREVISUALIZAR FOTOS
+==========================================
+*/
+
+const photoUploadArea =
+  document.getElementById("photoUploadArea");
+
+const animalPhotos =
+  document.getElementById("animalPhotos");
+
+const photoPreviewList =
+  document.getElementById("photoPreviewList");
+
+
+let selectedPhotos = [];
+
+
+photoUploadArea?.addEventListener("click", () => {
+
+  animalPhotos.click();
+
+});
+
+
+animalPhotos?.addEventListener("change", event => {
+
+  const files =
+    Array.from(event.target.files);
+
+  selectedPhotos.push(...files);
+
+  renderPhotoPreviews();
+
+});
+
+
+function renderPhotoPreviews() {
+
+  photoPreviewList.innerHTML = "";
+
+  selectedPhotos.forEach((file, index) => {
+
+    const wrapper =
+      document.createElement("div");
+
+    wrapper.className =
+      `photo-preview ${index === 0 ? "cover" : ""}`;
+
+
+    const image =
+      document.createElement("img");
+
+    image.src =
+      URL.createObjectURL(file);
+
+
+    const remove =
+      document.createElement("button");
+
+    remove.type = "button";
+
+    remove.className =
+      "photo-preview-remove";
+
+    remove.textContent = "×";
+
+
+    remove.addEventListener("click", () => {
+
+      selectedPhotos.splice(index, 1);
+
+      renderPhotoPreviews();
+
+    });
+
+
+    wrapper.appendChild(image);
+
+    wrapper.appendChild(remove);
+
+    photoPreviewList.appendChild(wrapper);
+
+  });
+
+}
+
+
+/*
+==========================================
+DRAG & DROP DE FOTOS
+==========================================
+*/
+
+photoUploadArea?.addEventListener(
+  "dragover",
+  event => {
+
+    event.preventDefault();
+
+    photoUploadArea.classList.add("dragging");
+
+  }
+);
+
+
+photoUploadArea?.addEventListener(
+  "dragleave",
+  () => {
+
+    photoUploadArea.classList.remove("dragging");
+
+  }
+);
+
+
+photoUploadArea?.addEventListener(
+  "drop",
+  event => {
+
+    event.preventDefault();
+
+    photoUploadArea.classList.remove("dragging");
+
+    const files =
+      Array.from(event.dataTransfer.files)
+      .filter(file =>
+        file.type.startsWith("image/")
+      );
+
+    selectedPhotos.push(...files);
+
+    renderPhotoPreviews();
+
+  }
+);
+
+
+/*
+==========================================
+GUARDAR ANIMAL - DEMO
+==========================================
+*/
+
+const animalForm =
+  document.getElementById("animalForm");
+
+
+animalForm?.addEventListener("submit", event => {
+
+  event.preventDefault();
+
+
+  const name =
+    document.getElementById("animalName").value.trim();
+
+
+  if (!name) {
+    showToast("Ingresá el nombre del animal");
+    return;
+  }
+
+
+  closeAnimalModal();
+
+  animalForm.reset();
+
+  selectedPhotos = [];
+
+  renderPhotoPreviews();
+
+
+  showToast(
+    `${name} está listo para ser guardado`
+  );
+
+});
+
+  showSection("inicio");
+
+});
